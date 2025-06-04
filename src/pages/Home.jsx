@@ -85,7 +85,7 @@ function Home() {
 
       <div className="lg:flex justify-around items-center lg:w-full">
         <div className="flex flex-col gap-3 mt-3 lg:flex-row lg:items-center lg:justify-around w-full  justify-around">
-          <div className={(username == "admin") ? "flex flex-col gap-2 p-3 bg-amber-100 rounded-2xl border-3 w-1/3 text-center" : "hidden"}>
+          <div className={(username == "admin") ? "flex flex-col gap-2 p-3 bg-amber-50 rounded-2xl border-3 lg:w-1/3 text-center" : "hidden"}>
             <h1 className="text-xl font-bold leading-tight tracking-tight">
               Add new card
             </h1>
