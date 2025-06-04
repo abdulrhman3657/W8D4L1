@@ -1,4 +1,4 @@
-Admin login page: http://localhost:5173/adminlogin
+Admin login page: https://w8d4l1.onrender.com/adminlogin
 
-username: admin
+username: admin <br/>
 password: admin
