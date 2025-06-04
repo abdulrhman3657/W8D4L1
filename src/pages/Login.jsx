@@ -50,13 +50,13 @@ function Login() {
 
   return (
     <div>
-      <div className="flex min-h-full flex-col justify-center px-6 py-6 lg:px-8  bg-gray-300">
+      <div className="flex min-h-full flex-col justify-center px-6 py-6 lg:px-8 bg-gray-200">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
             Log in to your account
           </h2>
         </div>
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm border-5 border-blue-900 p-5 rounded-2xl bg-white">
           <div className="space-y-6">
             <div>
               <label className="block text-sm/6 font-medium text-gray-900">

@@ -3,13 +3,14 @@ import { useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import { MdOutlineDelete } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
+
 
 function Home() {
   const [item, setItem] = useState([]);
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
-  // const [gender, setGender] = useState("");
-  const [searchName, setSearchName] = useState("");
   const [searchList, setSearchList] = useState([]);
 
   const username = localStorage.getItem("username");
@@ -41,36 +42,12 @@ function Home() {
       data: {
         image: image,
         name: name,
-        // gender: gender,
         username: username,
       },
     }).then((res) => {
       setSearchList([res.data, ...item]);
       setItem([res.data, ...item]);
     });
-  };
-
-  // search all posts
-  const Search = () => {
-    if (searchName == "") {
-      setSearchList(item);
-      return;
-    }
-
-    let result = item.find((character) => {
-      return character.name == searchName;
-    });
-
-    if (result) {
-      setSearchList([result]);
-    } else {
-      Swal.fire({
-        title: "oops!",
-        text: "charachter not found",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
-    }
   };
 
   // get data
@@ -99,38 +76,22 @@ function Home() {
   };
 
   return (
-    <div className="bg-blue-100 flex flex-col items-center">
+    <div className="bg-gray-50 flex flex-col items-center">
       {username && (
         <div>
-          <h1 className="text-xl my-3 font-bold">welcome {username}</h1>
-          {/* <Link to={""}>go to profile</Link> */}
+          <h1 className="text-xl my-3 font-bold">@{username}</h1>
         </div>
       )}
 
       <div className="lg:flex justify-around items-center lg:w-full">
         <div className="flex flex-col gap-3 mt-3 lg:flex-row lg:items-center lg:justify-around w-full  justify-around">
-          <div className="flex gap-2 p-3 bg-gray-300 rounded-2xl">
-            <input
-              type="text"
-              className="bg-gray-50 border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block  p-2"
-              placeholder="Search"
-              value={searchName}
-              onChange={(e) => setSearchName(e.target.value)}
-            />
-            <button
-              className="rounded text-white bg-blue-500 hover:bg-blue-900 px-1 text-center"
-              onClick={Search}
-            >
-              Search
-            </button>
-          </div>
-          <div className={(username == "admin") ? "flex flex-col gap-2 p-3 bg-gray-200 rounded-2xl" : "hidden"}>
+          <div className={(username == "admin") ? "flex flex-col gap-2 p-3 bg-amber-100 rounded-2xl border-3 w-1/3 text-center" : "hidden"}>
             <h1 className="text-xl font-bold leading-tight tracking-tight">
               Add new card
             </h1>
             <input
               type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block  p-2"
+              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2 placeholder:text-center"
               placeholder="image"
               required
               value={image}
@@ -138,7 +99,7 @@ function Home() {
             />
             <input
               type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block  p-2"
+              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2 placeholder:text-center"
               placeholder="name"
               required
               value={name}
@@ -156,10 +117,10 @@ function Home() {
       </div>
 
       <div className="lg:w-9/10">
-        <ul className="p-5 flex flex-wrap justify-center  gap-3">
+        <ul className="p-5 flex flex-wrap justify-center gap-3">
           {searchList.map((element, index) => (
             <li className="rounded-2xl" key={index}>
-              <div className=" flex flex-col justify-around w-[35vh] bg-white pt-2  hover:translate-1 transition delay-50 shadow-2xl">
+              <div className=" flex flex-col justify-around w-[35vh] bg-white rounded-b-2xl pt-2  hover:translate-1 transition delay-50 shadow-2xl rounded-t-2xl">
                 <div className="flex flex-col gap-5">
                   <p className="text-center font-bold">{element.name}</p>
 
@@ -168,7 +129,7 @@ function Home() {
                   </p>
 
                   <div className="relative">
-                    <img className="" src={element.image} alt="" />
+                    <img className="rounded-b-2xl" src={element.image} alt="" />
 
                     {/* delete and update buttons */}
                     <div className="flex justify-around pb-2 w-full  absolute bottom-0">
@@ -180,7 +141,7 @@ function Home() {
                         }
                         onClick={() => deleteItem(element.id)}
                       >
-                        Delete
+                        <MdOutlineDelete className="text-3xl w-7 h-7" />
                       </button>
                       <Link
                         to={`UpdateCard/${element.id}`}
@@ -190,7 +151,7 @@ function Home() {
                             : "hidden"
                         }
                       >
-                        Update
+                        <FaRegEdit className="text-3xl w-6" />
                       </Link>
                     </div>
                   </div>

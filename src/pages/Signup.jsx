@@ -80,17 +80,13 @@ function Signup() {
     return
   }
 
-
-  localStorage.setItem("profileImg", "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg");
-
   axios({
       method: "post",
       url: "https://682199fa259dad2655afc100.mockapi.io/users",
       data: { 
         username: username,
         email: email,
-        password: password,
-        profileImg: "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
+        password: password
       },
     }).then((res) => {
       console.log(res.data)
@@ -113,11 +109,11 @@ function Signup() {
 
   return (
     <div>
-      <div className="flex min-h-full flex-col justify-center px-6 py-6 lg:px-8 bg-gray-300">
+      <div className="flex min-h-full flex-col justify-center px-6 py-6 lg:px-8 bg-gray-200">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign up</h2>
         </div>
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm border-5 border-blue-900 p-5 rounded-2xl bg-white">
           <div className="space-y-6">
             <div>
               <label className="block text-sm/6 font-medium text-gray-900">Username</label>

@@ -5,7 +5,6 @@ import Login from "../pages/Login"
 import Signup from "../pages/Signup"
 import Footer from "../components/Footer"
 import UpdateCard from "../components/UpdateCard"
-import Profile from "../components/Profile"
 import AdminLogin from "../pages/AdminLogin"
 
 const LayOut = () => {
@@ -26,7 +25,6 @@ const router = createBrowserRouter([
         {path: "login", element: <Login/>},
         {path: "signup", element: <Signup/>},
         {path: "UpdateCard/:id", element: <UpdateCard/>},
-        {path: "profile", element: <Profile/>},
         {path: "adminlogin", element: <AdminLogin/>}
       ]
   }

@@ -1,6 +1,5 @@
-import axios from "axios";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import {useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 function AdminLogin() {
@@ -47,7 +46,6 @@ function AdminLogin() {
                 Username
               </label>
               <div className="mt-2">
-                {/* email input */}
                 <input
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
